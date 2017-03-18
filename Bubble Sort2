@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define Item int
+#define less(a, b) (a < b)
+#define equal(a, b) (!less(a, b) && !less(b, a))
+#define swap(a, b) {Item t = a; a = b; b = t;}
+#define compswap(a, b) if(less(a, b))swap(a, b);
+
+void bubble(Item a[], int k, int r)
+{
+	int i, j;
+	for(i = k + 1; i <= r; i++)
+		for(j = i; j > k; j--)
+			compswap(a[j], a[j-1]);
+}
+
+
+int main(int argc, char *argv[])
+{
+	int k, m;
+	int numbers[10] = {2, 5, 1, 3, -1, 0, 7, -4, 10, 9};
+	printf("print original array: \n");
+	for(k = 0; k < 10; k++) {
+		printf("%d\t", numbers[k]);
+	}
+	bubble(numbers, 0, 9);
+	printf("print array sorted: \n");
+	
+	for(m = 0; m < 10; m++) {
+		printf("%d\t", numbers[m]);
+	}
+	return 0;
+}
